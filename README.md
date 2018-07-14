@@ -1,2 +1,2 @@
 # domainsoup-cli
-A cli for souping domains
+A commandline tool for souping domain names
