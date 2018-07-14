@@ -15,7 +15,7 @@ def check(x):
     dom = x + ".de"
     details = pythonwhois.get_whois(dom)
     if details['status'][0] == "free":
-        print("\r\t\t\t\033[1m\033[92m%s\tFREE\033[0m" % dom)
+        # print("\r\t\t\t\033[1m\033[92m%s\tFREE\033[0m" % dom)
         free.append(dom)
         freedump.write(dom + "\n")
     else:
@@ -38,5 +38,10 @@ def numbs():
     variants = [a+b+c for a,b,c in product("1234567890", repeat=3)]
     for x in variants:
         check(x)
-random()
+
+def all():
+    for variant in tqdm(variants):
+        check(variant)
+
+all()
 freedump.close()
