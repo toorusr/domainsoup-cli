@@ -9,18 +9,18 @@ variants = [a+b+c for a,b,c in product(chars, repeat=3)]
 
 free = []
 
-freedump = open('freedomains.dump', 'w')
-
 def check(x):
     dom = x + ".de"
     details = pythonwhois.get_whois(dom)
     if details['status'][0] == "free":
         # print("\r\t\t\t\033[1m\033[92m%s\tFREE\033[0m" % dom)
         free.append(dom)
-        freedump.write(dom + "\n")
+        with open('freedomains.dump', 'a') as freedump:
+            freedump.write("FRE:" + dom + "\n")
     else:
         # print("\t\t\t\033[91m%s\tTAKEN\033[0m" % dom)
-        pass
+        with open('freedomains.dump', 'a') as freedump:
+            freedump.write("FRE:" + dom + "\n")
 
 def random():
     randoms = []
@@ -44,4 +44,3 @@ def all():
         check(variant)
 
 all()
-freedump.close()
