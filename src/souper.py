@@ -20,7 +20,7 @@ def check(x):
     else:
         # print("\t\t\t\033[91m%s\tTAKEN\033[0m" % dom)
         with open('freedomains.dump', 'a') as freedump:
-            freedump.write("FRE:" + dom + "\n")
+            freedump.write("TAK:" + dom + "\n")
 
 def random():
     randoms = []
