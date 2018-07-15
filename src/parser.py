@@ -51,7 +51,7 @@ class Parser:
 
 
 
-with open("freedomains.bump", "r") as file:
+with open("freedomains.dump", "r") as file:
     lines = file.readlines()
     parsed = Parser(lines, ":").read
     # print(str(Parser.manipul(parsed)))
