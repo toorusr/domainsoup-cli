@@ -1,5 +1,18 @@
 #!/usr/bin python3
 
+phead = r"""
+ ____   ___  _   _ ____  ____   _    ____  ____  _____ ____
+/ ___| / _ \| | | |  _ \|  _ \ / \  |  _ \/ ___|| ____|  _ \
+\___ \| | | | | | | |_) | |_) / _ \ | |_) \___ \|  _| | |_) |
+ ___) | |_| | |_| |  __/|  __/ ___ \|  _ < ___) | |___|  _ <
+|____/ \___/ \___/|_|   |_| /_/   \_|_| \_|____/|_____|_| \_\
+
+[i] Searching for file freedomains.dump
+[i] Parsing file...
+[i] Searching free domains...
+"""
+
+
 class Parser:
     def __init__(self, lines, by):
         lines = self.removeBreak(lines)
@@ -57,6 +70,7 @@ with open("freedomains.dump", "r") as file:
     # print(str(Parser.manipul(parsed)))
     freec = 0
     takec = 0
+    print(phead)
     for x in parsed:
         if x[0] == "FRE":
             freec += 1
@@ -66,7 +80,7 @@ with open("freedomains.dump", "r") as file:
             # print("[o] \033[1m\033[91mTaken:\t " + x[1] + "\033[0m")
         else:
             pass
-    print("\n[i] Process of parsing finised with {} taken and {} free domains. \n [i] Total domains scanned: {}".format(takec, freec, takec + freec))
-    print("[i] Parsing specials (0=2, 0=1, 1=2)")
+    print("[i] Searching free specials (ABA, AAB, ABB)")
     for x in Parser.special(parsed):
-        print("[S] \033[1m\033[92mFree:\t " + x[1] + "\033[0m")
+        print("[o] \033[1m\033[92mSpecial:\t " + x[1] + "\033[0m")
+    print("\n[i] Process of parsing finised with {} taken and {} free domains. \n [i] Total domains scanned: {}".format(takec, freec, takec + freec))
