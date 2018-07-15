@@ -1,5 +1,7 @@
 #!/usr/bin python3
 
+from sys import argv
+from os import path
 phead = r"""
  ____   ___  _   _ ____  ____   _    ____  ____  _____ ____
 / ___| / _ \| | | |  _ \|  _ \ / \  |  _ \/ ___|| ____|  _ \
@@ -63,24 +65,26 @@ class Parser:
         return array
 
 
-
-with open("freedomains.dump", "r") as file:
-    lines = file.readlines()
-    parsed = Parser(lines, ":").read
-    # print(str(Parser.manipul(parsed)))
-    freec = 0
-    takec = 0
-    print(phead)
-    for x in parsed:
-        if x[0] == "FRE":
-            freec += 1
-            print("[o] \033[1m\033[92mFree:\t " + x[1] + "\033[0m")
-        elif x[0] == "TAK":
-            takec += 1
-            # print("[o] \033[1m\033[91mTaken:\t " + x[1] + "\033[0m")
-        else:
-            pass
-    print("[i] Searching free specials (ABA, AAB, ABB)")
-    for x in Parser.special(parsed):
-        print("[o] \033[1m\033[92mSpecial:\t " + x[1] + "\033[0m")
-    print("\n[i] Process of parsing finised with {} taken and {} free domains. \n [i] Total domains scanned: {}".format(takec, freec, takec + freec))
+if len(argv) > 1 and path.isfile(argv[1]):
+    with open(argv[1], "r") as file:
+        lines = file.readlines()
+        parsed = Parser(lines, ":").read
+        # print(str(Parser.manipul(parsed)))
+        freec = 0
+        takec = 0
+        print(phead)
+        for x in parsed:
+            if x[0] == "FRE":
+                freec += 1
+                print("[o] \033[1m\033[92mFree:\t " + x[1] + "\033[0m")
+            elif x[0] == "TAK":
+                takec += 1
+                # print("[o] \033[1m\033[91mTaken:\t " + x[1] + "\033[0m")
+            else:
+                pass
+        print("[i] Searching free specials (ABA, AAB, ABB)")
+        for x in Parser.special(parsed):
+            print("[o] \033[1m\033[92mSpecial:\t " + x[1] + "\033[0m")
+        print("\n[i] Process of parsing finised with {} taken and {} free domains. \n [i] Total domains scanned: {}".format(takec, freec, takec + freec))
+else:
+    print("Please input a valide dump file")
