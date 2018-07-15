@@ -22,6 +22,7 @@ def check(x):
         with open('freedomains.dump', 'a') as freedump:
             freedump.write("TAK:" + dom + "\n")
 
+
 def random():
     randoms = []
     for x in range(6000):
@@ -43,4 +44,16 @@ def all():
     for variant in tqdm(variants):
         check(variant)
 
-all()
+def custom():
+    save = False
+    customvar = []
+    for variant in variants:
+        if save:
+            customvar.append(variant)
+        if variant == "67r":
+            save = True
+    for cvar in tqdm(customvar):
+        check(cvar)
+
+custom()
+#all()
