@@ -33,3 +33,6 @@ python3 parser.py $domain_file
 
 ###### Configuration
 There is not really any configuration possible right now, but you can easily change the sourcecode on you behalve. It's indeed not so complicated.
+
+## License
+[MIT](https://github.com/toorusr/domainsoup-cli/tree/master/LICENSE)
