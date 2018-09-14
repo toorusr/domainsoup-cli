@@ -1,4 +1,4 @@
-# Domainsouper CLI
+# Domainsouper CLI 🍜
 > A commandline tool for souping domain names
 
 ###### Status
