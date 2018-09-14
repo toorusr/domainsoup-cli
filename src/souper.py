@@ -55,5 +55,4 @@ def custom():
     for cvar in tqdm(customvar):
         check(cvar)
 
-custom()
-#all()
+all()
