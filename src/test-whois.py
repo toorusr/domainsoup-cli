@@ -1,5 +1,6 @@
 import os
 import re
+from pythonwhois import get_whois  # i'm using this http://cryto.net/pythonwhois
 
 class Query:
     def __init__(self, name):
@@ -38,7 +39,7 @@ class Query:
                 pass
 
 # Query(input(">"))
-import pythonwhois  # i'm using this http://cryto.net/pythonwhois
+
 domains = ['google.com', 'stackoverflow.com', 'asdsafasgfergsdgdsfgdsfgds.de', 'asdfgfscsfasgfasdfafasf.com']
 for dom in domains:
     details = pythonwhois.get_whois(dom)
